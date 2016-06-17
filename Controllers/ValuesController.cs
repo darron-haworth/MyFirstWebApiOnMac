@@ -13,14 +13,21 @@ namespace MyFirstWebApiOnMac.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2", "value3" };
+            Random rnd = new Random();
+            int numValues = rnd.Next(5, 50); // creates a number between 1 and 12
+            var retVals = new string[numValues];
+            for(int i=0; i< numValues; i++){
+                retVals[i] = "value" + i.ToString();
+            }
+            return retVals;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            var val = "value" + id.ToString();
+            return val;
         }
 
         // POST api/values
