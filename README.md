@@ -38,5 +38,5 @@ You've created a new ASP.NET Core project. [Learn what's new](https://go.microso
 
 ## Bookmarks
 
-[Install for OSX 10.11](https://www.microsoft.com/net/core#macosx)
-[Tutorial](https://docs.asp.net/en/latest/tutorials/your-first-mac-aspnet.html)
+*   [Install for OSX 10.11](https://www.microsoft.com/net/core#macosx)
+*   [Tutorial](https://docs.asp.net/en/latest/tutorials/your-first-mac-aspnet.html)
