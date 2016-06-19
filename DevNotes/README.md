@@ -1,5 +1,5 @@
 # Output from /api/persons/
-
+```javascript
 [{
 	"id": 1,
 	"FirstName": "Darron",
@@ -26,3 +26,13 @@
 	"LastName": "Haworth",
 	"City": "Ranch Cordova"
 }]
+```
+# Outpub from /api/persons/4
+```javascript
+{
+	"id": 4,
+	"FirstName": "Jennifer",
+	"LastName": "Johnson",
+	"City": "Austin"
+}
+```
