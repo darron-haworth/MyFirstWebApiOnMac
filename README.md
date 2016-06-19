@@ -1,4 +1,4 @@
-# dotNet Core WebAPI rest service written on Mac using Postgres backend (VSCode)
+# dotNet Core WebAPI on Mac using Postgres
 
 I've been wanting to get my feet wet with dotNet Core on the Mac.  I need to build out some API's for my personal React Native mobile project and I want to host these web services on Unix servers and need to use open source DB.  This project is just a playground for me to work out the mechanics of dotNet Core WebApi connecting to postgres to expose rest services via the web. :)
 
