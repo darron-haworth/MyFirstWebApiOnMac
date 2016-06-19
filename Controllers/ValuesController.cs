@@ -8,23 +8,24 @@ using Npgsql;
 using NpgsqlTypes;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.AspNetCore.Builder;
-
+using MyFirstWebApiOnMac.Models;
 
 namespace MyFirstWebApiOnMac.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class PersonsController : Controller
     {
-        // GET api/values
+        // GET api/persons
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Person> Get()
         {
+            var retPersons = new List<Person>();
             //We don't want to store DB credentials in source code, pull them from the following Environment Variables
             var pgUser = Environment.GetEnvironmentVariable("DbUser");
             var pgPw = Environment.GetEnvironmentVariable("DbPw");
             var connString = String.Format("Host=127.0.0.1;Username={0};Password={1};Database=DHSandbox", pgUser, pgPw);
 
-            var retVals = new List<String>();
+            
 
                 using (var conn = new NpgsqlConnection(connString))   
                 {
@@ -40,25 +41,30 @@ namespace MyFirstWebApiOnMac.Controllers
                         {
                             while (reader.Read())
                             { 
-                                var fullName = string.Format("{0} {1}", reader.GetString(1), reader.GetString(2));
-                                retVals.Add(fullName);
+                                var nextPerson = new Person();
+                                nextPerson.id = reader.GetInt32(0);
+                                nextPerson.FirstName = reader.GetString(1);
+                                nextPerson.LastName = reader.GetString(2);
+                                nextPerson.City = reader.GetString(3);
+
+                                retPersons.Add(nextPerson);
                             }
                         }
                     }
                 }
-            return retVals.ToArray();
+            return retPersons.ToArray();
         }
 
-        // GET api/values/5
+        // GET api/persons/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Person Get(int id)
         {
             //We don't want to store DB credentials in source code, pull them from the following Environment Variables
             var pgUser = Environment.GetEnvironmentVariable("DbUser");
             var pgPw = Environment.GetEnvironmentVariable("DbPw");
             var connString = String.Format("Host=127.0.0.1;Username={0};Password={1};Database=DHSandbox", pgUser, pgPw);
 
-            var retVal = String.Format("No records found for {0}", id);  
+            var returnPerson = new Person();
 
                 using (var conn = new NpgsqlConnection(connString))   
                 {
@@ -74,13 +80,16 @@ namespace MyFirstWebApiOnMac.Controllers
                         {
                             while (reader.Read())
                             { 
-                                retVal = string.Format("{0} {1}", reader.GetString(1), reader.GetString(2));
+                                returnPerson.id = reader.GetInt32(0);
+                                returnPerson.FirstName = reader.GetString(1);
+                                returnPerson.LastName = reader.GetString(2);
+                                returnPerson.City = reader.GetString(3);
                             }
                         }
                     }
                 }
 
-            return retVal;
+            return returnPerson;
         }
 
         // POST api/values
