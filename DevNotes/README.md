@@ -1,3 +1,29 @@
+# PostGres table
+
+```sql
+-- Table: public."Person"
+
+-- DROP TABLE public."Person";
+
+CREATE TABLE public."Person"
+(
+  id integer NOT NULL,
+  first_name character varying(50),
+  last_name character varying(50),
+  city character varying(50),
+  CONSTRAINT pk_person PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public."Person"
+  OWNER TO postgres;
+GRANT ALL ON TABLE public."Person" TO postgres;
+GRANT ALL ON TABLE public."Person" TO "dhsandbox-writer" WITH GRANT OPTION;
+GRANT ALL ON TABLE public."Person" TO public;
+
+```
+
 # Output from /api/persons/
 ```javascript
 [{
