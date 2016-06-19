@@ -53,8 +53,34 @@ namespace MyFirstWebApiOnMac.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            var val = "value" + id.ToString();
-            return val;
+            //We don't want to store DB credentials in source code, pull them from the following Environment Variables
+            var pgUser = Environment.GetEnvironmentVariable("DbUser");
+            var pgPw = Environment.GetEnvironmentVariable("DbPw");
+            var connString = String.Format("Host=127.0.0.1;Username={0};Password={1};Database=DHSandbox", pgUser, pgPw);
+
+            var retVal = String.Format("No records found for {0}", id);  
+
+                using (var conn = new NpgsqlConnection(connString))   
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+
+                        // Insert some data
+                        cmd.CommandText = String.Format("SELECT * FROM public.\"Person\" WHERE id = {0}", id);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            { 
+                                retVal = string.Format("{0} {1}", reader.GetString(1), reader.GetString(2));
+                            }
+                        }
+                    }
+                }
+
+            return retVal;
         }
 
         // POST api/values
