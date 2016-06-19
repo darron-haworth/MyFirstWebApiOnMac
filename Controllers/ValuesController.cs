@@ -19,7 +19,7 @@ namespace MyFirstWebApiOnMac.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-
+            //We don't want to store DB credentials in source code, pull them from the following Environment Variables
             var pgUser = Environment.GetEnvironmentVariable("DbUser");
             var pgPw = Environment.GetEnvironmentVariable("DbPw");
             var connString = String.Format("Host=127.0.0.1;Username={0};Password={1};Database=DHSandbox", pgUser, pgPw);
