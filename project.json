@@ -1,9 +1,12 @@
 {
+
+  "userSecretsId": "aspnet-WebApi-74C723F7-A826-49C9-B18E-2068DC50137C",
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0-rc2-3002702",
       "type": "platform"
     },
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
@@ -22,7 +25,7 @@
     "System.Net.Primitives": "4.0.11-rc2-24027",
     "System.Net.Sockets": "4.1.0-rc2-24027",
     "System.Net.Security": "4.0.0-rc2-24027",
-    "System.Net.NetworkInformation": "4.0.10-beta-23123",
+    "System.Net.NetworkInformation": "4.1.0-rc2-24027",
     "System.Runtime": "4.1.0-rc2-24027",
     "System.Runtime.InteropServices": "4.1.0-rc2-24027",
     "System.Runtime.InteropServices.RuntimeInformation" : "4.0.0-rc2-24027",
@@ -30,11 +33,12 @@
     "System.Reflection": "4.1.0-rc2-24027",
     "System.Reflection.Extensions": "4.0.1-rc2-24027",
     "System.Reflection.TypeExtensions": "4.1.0-rc2-24027",
-    "System.Text.Encoding.Extensions": "4.0.10",
+    "System.Text.Encoding.Extensions": "4.0.11-rc2-24027",
     "System.Threading": "4.0.11-rc2-24027",
     "System.Threading.Thread": "4.0.0-rc2-24027",
-    "System.Threading.Timer": "4.0.0",
+    "System.Threading.Timer": "4.0.1-rc2-24027",
     "Microsoft.Win32.Primitives": "4.0.1-rc2-24027",
+    "EntityFramework7.Npgsql.Design" :"3.1.0-rc1-5",
     "Npgsql": "3.1.4"
   },
 
@@ -42,6 +46,10 @@
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
       "version": "1.0.0-preview1-final",
       "imports": "portable-net45+win8+dnxcore50"
+    },
+      "Microsoft.Extensions.SecretManager.Tools": {
+    "version": "1.0.0-preview1-final",
+    "imports": "portable-net45+win8+dnxcore50"
     }
   },
 

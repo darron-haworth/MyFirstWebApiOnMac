@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Npgsql;
+using NpgsqlTypes;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using Microsoft.AspNetCore.Builder;
+
 
 namespace MyFirstWebApiOnMac.Controllers
 {
@@ -13,13 +19,34 @@ namespace MyFirstWebApiOnMac.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            Random rnd = new Random();
-            int numValues = rnd.Next(5, 50); // creates a number between 1 and 12
-            var retVals = new string[numValues];
-            for(int i=0; i< numValues; i++){
-                retVals[i] = "value" + i.ToString();
-            }
-            return retVals;
+
+            var pgUser = Environment.GetEnvironmentVariable("DbUser");
+            var pgPw = Environment.GetEnvironmentVariable("DbPw");
+            var connString = String.Format("Host=127.0.0.1;Username={0};Password={1};Database=DHSandbox", pgUser, pgPw);
+
+            var retVals = new List<String>();
+
+                using (var conn = new NpgsqlConnection(connString))   
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+
+                        // Insert some data
+                        cmd.CommandText = "SELECT * FROM public.\"Person\"";
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            { 
+                                var fullName = string.Format("{0} {1}", reader.GetString(1), reader.GetString(2));
+                                retVals.Add(fullName);
+                            }
+                        }
+                    }
+                }
+            return retVals.ToArray();
         }
 
         // GET api/values/5
