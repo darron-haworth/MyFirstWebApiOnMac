@@ -1,4 +1,4 @@
-# PostGres table
+# PostGreSQL table
 
 ```sql
 -- Table: public."Person"
