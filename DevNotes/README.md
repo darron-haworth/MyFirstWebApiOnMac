@@ -24,6 +24,21 @@ GRANT ALL ON TABLE public."Person" TO public;
 
 ```
 
+
+```
+Inserted the following to the “Persons” table:
+
+
+id|first_name|last_name|city
+--- | --- | --- | ---
+1 |Darron |Haworth |Roseville
+2 |Robin |Haworth |Roseville
+3 |Kayla |Anderson |Roseville
+4 |Jennifer |Johnson |Austin
+5 |"Brandon |Haworth |Ranch Cordova
+
+```
+
 # Output from /api/persons/
 ```javascript
 [{
