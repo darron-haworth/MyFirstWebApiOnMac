@@ -28,6 +28,11 @@ GRANT ALL ON TABLE public."Person" TO public;
 ```
 Inserted the following to the “Persons” table:
 
+| Tables        | Are           | Cool  | Not |
+| ------------- |:-------------:| -----:| ---:|
+| col 3 is      | right-aligned | $1600 | x   |
+| col 2 is      | centered      |   $12 | y   |
+| zebra stripes | are neat      |    $1 | z   |
 
 id|first_name|last_name|city
 --- | --- | --- | ---
