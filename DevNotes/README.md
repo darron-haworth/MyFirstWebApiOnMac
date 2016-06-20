@@ -64,7 +64,7 @@ INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (5, 'Brando
 	"City": "Ranch Cordova"
 }]
 ```
-# Outpub from /api/persons/4
+# Output from /api/persons/4
 ```javascript
 {
 	"id": 4,
