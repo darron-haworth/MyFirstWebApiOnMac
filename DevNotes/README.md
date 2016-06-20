@@ -25,21 +25,13 @@ GRANT ALL ON TABLE public."Person" TO public;
 ```
 
 
-```
-Inserted the following to the “Persons” table:
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-id|first_name|last_name|city
---- | --- | --- | ---
-1 |Darron |Haworth |Roseville
-2 |Robin |Haworth |Roseville
-3 |Kayla |Anderson |Roseville
-4 |Jennifer |Johnson |Austin
-5 |"Brandon |Haworth |Ranch Cordova
+```sql
+--Inserted the following to the “Persons” table:
+INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (1, 'Darron', 'Haworth', 'Roseville');
+INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (2, 'Robin', 'Haworth', 'Roseville');
+INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (3, 'Kayla', 'Anderson', 'Roseville');
+INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (4, 'Jennifer', 'Johnson', 'Austin');
+INSERT INTO public."Person" (id, first_name, last_name, city) VALUES (5, 'Brandon', 'Haworth', 'Ranch Cordova');
 
 ```
 
